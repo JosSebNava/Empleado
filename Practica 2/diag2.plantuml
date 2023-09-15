@@ -1,0 +1,10 @@
+@startuml user
+
+class Main {
+  + main(args: String[]): void
+}
+
+Main --> EmpleadoPorHora
+Main --> EmpleadoAsalariado
+
+@enduml

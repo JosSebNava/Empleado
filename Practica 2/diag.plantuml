@@ -1,0 +1,38 @@
+@startuml user
+
+class Empleado {
+  - nombre: String
+  - salario: double
+  + Empleado(nombre: String, salario: double)
+  + getNombre(): String
+  + getSalario(): double
+}
+
+class EmpleadoPorHora {
+  - horasTrabajadas: int
+  - valorPorHora: double
+  + EmpleadoPorHora(nombre: String, salario: double, horasTrabajadas: int, valorPorHora: double) throws SalarioInvalidoException
+  + calcularSalario(): double
+}
+
+class EmpleadoAsalariado {
+  - diasTrabajados: int
+  - sueldoMensual: double
+  + EmpleadoAsalariado(nombre: String, salario: double, diasTrabajados: int, sueldoMensual: double) throws SalarioInvalidoException
+  + calcularSalario(): double
+  + calcularBonificacion(): double
+}
+
+interface Bonificable {
+  + calcularBonificacion(): double
+}
+
+class SalarioInvalidoException {
+  + SalarioInvalidoException(mensaje: String)
+}
+
+Empleado <|-- EmpleadoPorHora
+Empleado <|-- EmpleadoAsalariado
+EmpleadoAsalariado ..|> Bonificable
+
+@enduml
